@@ -45,13 +45,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     justifyContent: 'center',
     alignItems: 'center',
-    shadowRadius: 3,
-
-    shadowColor: 'rgba(0, 0, 0, 0.2)',
-    shadowOffset: {
-      width: 3,
-      height: 3
-    }
+    elevation: 3
   },
   title: {
     fontSize: 24
