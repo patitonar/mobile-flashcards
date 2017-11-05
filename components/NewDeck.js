@@ -19,6 +19,10 @@ class NewDeck extends Component {
   onSubmit = () => {
     const { text } = this.state;
 
+    if (text === '') {
+      return;
+    }
+
     this.props.dispatch(addDeck(text));
     addNewDeck(text);
 
