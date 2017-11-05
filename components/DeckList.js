@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity
+} from 'react-native';
 import { initializeState, getDecks } from '../utils/api';
 import { connect } from 'react-redux';
 import { fetchDecks } from '../actions';
@@ -21,12 +27,17 @@ class DeckList extends Component {
           data={array}
           keyExtractor={(item, index) => item.title}
           renderItem={({ item }) => (
-            <View key={item.title} style={styles.item}>
-              <Text style={styles.title}>{item.title}</Text>
-              <Text style={styles.subtitle}>
-                {item.questions ? item.questions.length : 0} cards
-              </Text>
-            </View>
+            <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.navigate('DeckDetail', { deck: item })}
+            >
+              <View key={item.title} style={styles.item}>
+                <Text style={styles.title}>{item.title}</Text>
+                <Text style={styles.subtitle}>
+                  {item.questions ? item.questions.length : 0} cards
+                </Text>
+              </View>
+            </TouchableOpacity>
           )}
         />
       </View>

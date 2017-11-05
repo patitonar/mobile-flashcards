@@ -3,6 +3,7 @@ import { View, StatusBar } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import DeckList from './components/DeckList';
 import NewDeck from './components/NewDeck';
+import DeckDetail from './components/DeckDetail';
 import { Constants } from 'expo';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -41,6 +42,16 @@ const Tabs = TabNavigator(
 const MainNavigator = StackNavigator({
   Home: {
     screen: Tabs
+  },
+  DeckDetail: {
+    screen: DeckDetail,
+    navigationOptions: ({ navigation }) => ({
+      title: `${navigation.state.params.deck.title}`,
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: '#2196f3'
+      }
+    })
   }
 });
 
