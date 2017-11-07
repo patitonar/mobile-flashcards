@@ -10,6 +10,7 @@ import { NavigationActions } from 'react-navigation';
 import { addNewDeck } from '../utils/api';
 import { addDeck } from '../actions';
 import { connect } from 'react-redux';
+import { blue, white } from '../utils/styles';
 
 class NewDeck extends Component {
   state = {
@@ -51,7 +52,7 @@ class NewDeck extends Component {
 const styles = StyleSheet.create({
   view: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: white,
     borderRadius: 2,
     padding: 24,
     margin: 5,
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     fontSize: 24
   },
   button: {
-    backgroundColor: '#2196f3',
+    backgroundColor: blue,
     marginTop: 30,
     padding: 10,
     paddingLeft: 30,
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   buttonText: {
-    color: 'white',
+    color: white,
     fontSize: 16,
     textAlign: 'center'
   }

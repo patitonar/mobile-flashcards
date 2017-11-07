@@ -9,6 +9,7 @@ import {
 import { initializeState, getDecks } from '../utils/api';
 import { connect } from 'react-redux';
 import { fetchDecks } from '../actions';
+import { white } from '../utils/styles';
 
 class DeckList extends Component {
   componentDidMount() {
@@ -48,7 +49,7 @@ class DeckList extends Component {
 const styles = StyleSheet.create({
   item: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: white,
     borderRadius: 2,
     padding: 24,
     marginLeft: 5,
