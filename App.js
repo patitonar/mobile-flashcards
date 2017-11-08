@@ -9,6 +9,8 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
 import { blue, white, black } from './utils/styles';
+import AddCard from './components/AddCard';
+import DeckQuiz from './components/DeckQuiz';
 
 function UdaciStatusBar({ backgroundColor, ...props }) {
   return (
@@ -46,6 +48,26 @@ const MainNavigator = StackNavigator({
   },
   DeckDetail: {
     screen: DeckDetail,
+    navigationOptions: ({ navigation }) => ({
+      title: `${navigation.state.params.deck.title}`,
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: blue
+      }
+    })
+  },
+  AddCard: {
+    screen: AddCard,
+    navigationOptions: ({ navigation }) => ({
+      title: `${navigation.state.params.deck.title}`,
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: blue
+      }
+    })
+  },
+  DeckQuiz: {
+    screen: DeckQuiz,
     navigationOptions: ({ navigation }) => ({
       title: `${navigation.state.params.deck.title}`,
       headerTintColor: white,

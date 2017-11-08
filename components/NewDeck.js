@@ -55,9 +55,7 @@ const styles = StyleSheet.create({
     backgroundColor: white,
     borderRadius: 2,
     padding: 24,
-    margin: 5,
-    alignItems: 'center',
-    elevation: 3
+    alignItems: 'center'
   },
   title: {
     marginTop: 20,
