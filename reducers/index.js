@@ -1,4 +1,4 @@
-import { FETCH_DECKS, ADD_DECK } from '../actions';
+import { FETCH_DECKS, ADD_DECK, UPDATE_DECK } from '../actions';
 
 function decks(state = {}, action) {
   switch (action.type) {
@@ -11,6 +11,11 @@ function decks(state = {}, action) {
       return {
         ...state,
         [action.payload]: { title: action.payload }
+      };
+    case UPDATE_DECK:
+      return {
+        ...state,
+        [action.payload.title]: action.payload
       };
 
     default:
