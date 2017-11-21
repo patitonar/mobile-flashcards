@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity
-} from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { addNewDeck } from '../utils/api';
 import { addDeck } from '../actions';
 import { connect } from 'react-redux';
-import { blue, white } from '../utils/styles';
+import { white } from '../utils/styles';
+import Button from './Button';
 
 class NewDeck extends Component {
   state = {
@@ -41,9 +36,7 @@ class NewDeck extends Component {
           onChangeText={text => this.setState({ text })}
           value={this.state.text}
         />
-        <TouchableOpacity style={styles.button} onPress={this.onSubmit}>
-          <Text style={styles.buttonText}>SUBMIT</Text>
-        </TouchableOpacity>
+        <Button onSubmit={this.onSubmit} text="SUBMIT" />
       </View>
     );
   }
@@ -67,23 +60,6 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     height: 80,
     fontSize: 24
-  },
-  button: {
-    backgroundColor: blue,
-    marginTop: 30,
-    padding: 10,
-    paddingLeft: 30,
-    paddingRight: 30,
-    height: 45,
-    borderRadius: 2,
-    alignSelf: 'center',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  buttonText: {
-    color: white,
-    fontSize: 16,
-    textAlign: 'center'
   }
 });
 

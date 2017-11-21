@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { white, blue } from '../utils/styles';
+import Button from './Button';
 
 class DeckDetail extends Component {
   render() {
@@ -15,18 +16,17 @@ class DeckDetail extends Component {
           </Text>
         </View>
         <View style={styles.actions}>
-          <TouchableOpacity
-            style={styles.addCard}
-            onPress={() => this.props.navigation.navigate('AddCard', { deck })}
-          >
-            <Text style={styles.addCardText}>Add Card</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.quiz}
-            onPress={() => this.props.navigation.navigate('DeckQuiz', { deck })}
-          >
-            <Text style={styles.quizText}>Start Quiz</Text>
-          </TouchableOpacity>
+          <Button
+            secondary
+            onSubmit={() => this.props.navigation.navigate('AddCard', { deck })}
+            text="Add Card"
+          />
+          <Button
+            onSubmit={() =>
+              this.props.navigation.navigate('DeckQuiz', { deck })
+            }
+            text="Start Quiz"
+          />
         </View>
       </View>
     );
@@ -59,42 +59,6 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 24
-  },
-  addCard: {
-    backgroundColor: white,
-    marginTop: 30,
-    padding: 10,
-    paddingLeft: 30,
-    paddingRight: 30,
-    height: 45,
-    borderRadius: 2,
-    borderWidth: 2,
-    borderColor: blue,
-    alignSelf: 'center',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  addCardText: {
-    color: blue,
-    fontSize: 16,
-    textAlign: 'center'
-  },
-  quiz: {
-    backgroundColor: blue,
-    marginTop: 30,
-    padding: 10,
-    paddingLeft: 30,
-    paddingRight: 30,
-    height: 45,
-    borderRadius: 2,
-    alignSelf: 'center',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  quizText: {
-    color: white,
-    fontSize: 16,
-    textAlign: 'center'
   }
 });
 

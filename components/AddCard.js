@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity
-} from 'react-native';
-import { blue, white } from '../utils/styles';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { white } from '../utils/styles';
 import { connect } from 'react-redux';
 import { updateDeck } from '../actions';
 import { updateDeck as updateDeckApi } from '../utils/api';
+import Button from './Button';
 
 class AddCard extends Component {
   state = {
@@ -26,10 +21,12 @@ class AddCard extends Component {
     const { navigation } = this.props;
     const { deck } = navigation.state.params;
 
+    const previousQuestions = deck.questions || [];
+
     const newDeck = {
       title: deck.title,
       questions: [
-        ...deck.questions,
+        ...previousQuestions,
         {
           question,
           answer
@@ -60,9 +57,7 @@ class AddCard extends Component {
           value={this.state.answer}
           placeholder="Answer"
         />
-        <TouchableOpacity style={styles.button} onPress={this.onSubmit}>
-          <Text style={styles.buttonText}>SUBMIT</Text>
-        </TouchableOpacity>
+        <Button onSubmit={this.onSubmit} text="SUBMIT" />
       </View>
     );
   }
@@ -81,23 +76,6 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     height: 80,
     fontSize: 16
-  },
-  button: {
-    backgroundColor: blue,
-    marginTop: 30,
-    padding: 10,
-    paddingLeft: 30,
-    paddingRight: 30,
-    height: 45,
-    borderRadius: 2,
-    alignSelf: 'center',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  buttonText: {
-    color: white,
-    fontSize: 16,
-    textAlign: 'center'
   }
 });
 
