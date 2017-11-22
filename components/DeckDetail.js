@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import { white, blue } from '../utils/styles';
+import { white } from '../utils/styles';
 import Button from './Button';
 
 class DeckDetail extends Component {
@@ -21,12 +21,15 @@ class DeckDetail extends Component {
             onSubmit={() => this.props.navigation.navigate('AddCard', { deck })}
             text="Add Card"
           />
-          <Button
-            onSubmit={() =>
-              this.props.navigation.navigate('DeckQuiz', { deck })
-            }
-            text="Start Quiz"
-          />
+          {deck.questions &&
+            deck.questions.length > 0 && (
+              <Button
+                onSubmit={() =>
+                  this.props.navigation.navigate('DeckQuiz', { deck })
+                }
+                text="Start Quiz"
+              />
+            )}
         </View>
       </View>
     );

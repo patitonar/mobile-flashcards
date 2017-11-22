@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { blue, white } from '../utils/styles';
+import { blue, white, red, green } from '../utils/styles';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 class Button extends Component {
   render() {
+    const bColor = this.props.backgroundColor;
+    const large = this.props.large ? { width: 150 } : {};
+    const type = this.props.secondary ? styles.secondary : styles.primary;
+    const color = bColor ? { backgroundColor: bColor } : {};
+    const styledButton = [type, color, large];
     return (
-      <TouchableOpacity
-        style={this.props.secondary ? styles.secondary : styles.primary}
-        onPress={this.props.onSubmit}
-      >
+      <TouchableOpacity style={styledButton} onPress={this.props.onSubmit}>
         <Text
           style={
             this.props.secondary ? styles.secondaryText : styles.primaryText
