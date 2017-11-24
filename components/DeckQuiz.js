@@ -5,6 +5,7 @@ import { white, blue, red, green } from '../utils/styles';
 import Button from './Button';
 import QuizResult from './QuizResult';
 import { NavigationActions } from 'react-navigation';
+import { clearLocalNotification, setLocalNotification } from '../utils/api';
 
 class DeckQuiz extends Component {
   state = {
@@ -23,6 +24,7 @@ class DeckQuiz extends Component {
         score: state.score + 1,
         finished: true
       }));
+      this.clearNotification();
     } else {
       this.setState(state => ({
         score: state.score + 1,
@@ -40,12 +42,17 @@ class DeckQuiz extends Component {
       this.setState(state => ({
         finished: true
       }));
+      this.clearNotification();
     } else {
       this.setState(state => ({
         index: state.index + 1,
         answer: false
       }));
     }
+  };
+
+  clearNotification = () => {
+    clearLocalNotification().then(setLocalNotification);
   };
 
   onStartAgain = () => {
