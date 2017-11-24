@@ -26,7 +26,8 @@ class DeckQuiz extends Component {
     } else {
       this.setState(state => ({
         score: state.score + 1,
-        index: state.index + 1
+        index: state.index + 1,
+        answer: false
       }));
     }
   };
@@ -41,7 +42,8 @@ class DeckQuiz extends Component {
       }));
     } else {
       this.setState(state => ({
-        index: state.index + 1
+        index: state.index + 1,
+        answer: false
       }));
     }
   };
