@@ -1,5 +1,19 @@
 {
   "expo": {
-    "sdkVersion": "21.0.0"
+    "sdkVersion": "21.0.0",
+    "orientation": "portrait",
+    "name": "Mobile Flashcards",
+    "description": "A simple app to study!",
+    "slug": "mobileFlashcards",
+    "version": "1.0",
+    "icon":
+      "https://www.oxfordlearning.com/wp-content/uploads/2015/10/icon-study-skills2.png",
+    "notification": {
+      "icon":
+        "https://www.oxfordlearning.com/wp-content/uploads/2015/10/icon-study-skills2.png"
+    },
+    "android": {
+      "package": "org.mobileflashcards.exp"
+    }
   }
 }
