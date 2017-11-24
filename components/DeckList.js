@@ -6,7 +6,7 @@ import {
   FlatList,
   TouchableOpacity
 } from 'react-native';
-import { initializeState, getDecks } from '../utils/api';
+import { getDecks } from '../utils/api';
 import { connect } from 'react-redux';
 import { fetchDecks } from '../actions';
 import { white } from '../utils/styles';
@@ -14,9 +14,7 @@ import { white } from '../utils/styles';
 class DeckList extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
-    initializeState().then(
-      getDecks().then(decks => dispatch(fetchDecks(decks)))
-    );
+    getDecks().then(decks => dispatch(fetchDecks(decks)));
   }
 
   render() {
@@ -30,7 +28,8 @@ class DeckList extends Component {
           renderItem={({ item }) => (
             <TouchableOpacity
               onPress={() =>
-                this.props.navigation.navigate('DeckDetail', { deck: item })}
+                this.props.navigation.navigate('DeckDetail', { deck: item })
+              }
             >
               <View key={item.title} style={styles.item}>
                 <Text style={styles.title}>{item.title}</Text>
