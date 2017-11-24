@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { white, blue, red, green } from '../utils/styles';
 import Button from './Button';
+import QuizResult from './QuizResult';
+import { NavigationActions } from 'react-navigation';
 
 class DeckQuiz extends Component {
   state = {
@@ -44,11 +46,31 @@ class DeckQuiz extends Component {
     }
   };
 
+  onStartAgain = () => {
+    this.setState({
+      index: 1,
+      score: 0,
+      answer: false,
+      finished: false
+    });
+  };
+
+  onGoBack = () => {
+    this.props.navigation.dispatch(NavigationActions.back());
+  };
+
   render() {
     const { deck } = this.props;
-    const { index, answer, finished } = this.state;
+    const { index, answer, finished, score } = this.state;
     if (finished) {
-      return <View />;
+      return (
+        <QuizResult
+          score={score}
+          total={deck.questions.length}
+          onStartAgain={this.onStartAgain}
+          onGoBack={this.onGoBack}
+        />
+      );
     }
     const pair = deck.questions[index - 1];
     return (
