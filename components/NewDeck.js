@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
-import { NavigationActions } from 'react-navigation';
 import { addNewDeck } from '../utils/api';
 import { addDeck } from '../actions';
 import { connect } from 'react-redux';
@@ -24,7 +23,7 @@ class NewDeck extends Component {
 
     this.setState(() => ({ text: '' }));
 
-    this.props.navigation.dispatch(NavigationActions.back({ key: 'NewDeck' }));
+    this.props.navigation.navigate('DeckDetail', { deck: { title: text } });
   };
 
   render() {
